@@ -5,6 +5,10 @@ version: '2'
 
 services:
   proxy:
+#this build image from give dockerfile here its a nginx.Dockerfile 
+#so first this build new image from dockerfile and then run that image
+#see the nginx.Dockerfile for how its done
+
     build:
       context: .
       dockerfile: nginx.Dockerfile
@@ -12,5 +16,6 @@ services:
       - '80:80'
   web:
     image: httpd
+#dynamic data reflact it mount to local host dir so when you change in html->index.html and you just refress it will see on browser
     volumes:
       - ./html:/usr/local/apache2/htdocs/
